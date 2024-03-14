@@ -8,41 +8,59 @@ import MyComponent from './components/MyComponent';
 import TextComponent from './components/TextComponent';
 import CounterAsObj from './components/CounterAsObj';
 import InputComponent from './components/InputComponent';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import PersonInput from './components/PersonInput';
 import ComponenteMezzo from './components/ComponenteMezzo';
 import { PersonInfo } from './Interfacce';
+import ComponentInterval from './components/ComponentInterval';
+import TodoList from './components/TodoList';
 
 
 
 //tsx è un superset di jsx, un superset è un linguaggio che estende il linguaggio base
 //quindi tsx serve per renderizzare i componenti attraverso l'uso di variabili e funzioni
 export default function App() {
-  const [state, setState] = useState({ name: "" , surname: ""});
-  const [value, setInitialValue] = useState(0);
+  // const [state, setState] = useState({ name: "" , surname: ""});
+  const [value, setInitialValue] = useState(10);
 
-  const handleClick = (person: PersonInfo) => {
-    console.log(person);
-    setState(person);
-  };
+  function calcolo(n:number){
+    return n*2;
+  }
+  const risultato = useMemo(() => {
+   
+    return calcolo(value);
+  }, [value]);
+
+
+
+  // const handleClick = (person: PersonInfo) => {
+  //   console.log(person);
+  //   setState(person);
+  // };
   return (
     <>
-      <div className={styles.title}>
+
+
+    <TodoList />
+      {/* <div className={styles.title}> */}
         {/* <PersonInput onClick={handleClick} /> */}
-        <ComponenteMezzo  onClick={handleClick} />
+        {/* <ComponenteMezzo  onClick={handleClick} /> */}
 
-        <div>name: {state.name}, surname: {state.surname}</div>
+        {/* <div>name: {state.name}, surname: {state.surname}</div> */}
         
-        <Contatore key={value}/>
-        <button onClick={() => setInitialValue(15)}>imposta a 15</button>
+        {/* <Contatore initialValue={value}/> */}
         
-      </div>
+       
+        {/* <button onClick={() => setInitialValue(20)}>imposta a 15</button> */}
+        {/* { value !== 20 && <ComponentInterval/>} */}
+        {/* <div>{risultato}</div>
+      </div> */}
 
-      <MyProvider>
+      {/* <MyProvider>
         <div>
           <MyComponent />
         </div>
-      </MyProvider>
+      </MyProvider> */}
 
     </>
   );
@@ -81,6 +99,5 @@ export function CyclingRenderingComponent() {
   )
   
 }
-
 
 

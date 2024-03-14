@@ -16,7 +16,10 @@ export default function Contatore(prop: {
 
     useEffect(() => {
       console.log("useeffect", initialValue);
-        Setcount(initialValue);
+      Setcount(initialValue);
+      return () => {
+        console.log("cleanup", initialValue);
+      };
         
     }, [initialValue]);
 

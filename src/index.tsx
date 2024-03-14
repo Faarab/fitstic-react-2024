@@ -9,8 +9,10 @@ const root = ReactDOM.createRoot(
 //renderizza il componente App. React.StrictMode serve per il componente perché 
 //venga eseguito in modalità di debug
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  // <React.StrictMode>
+     <App />
+  // </React.StrictMode>
+  
+ 
 );
 
